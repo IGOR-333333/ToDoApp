@@ -1,0 +1,33 @@
+name: Pipeline de CI/CD
+
+on:
+  push:
+    branches:
+      - main   # Gatilho: push na branch principal
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Fazer checkout do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Configurar Java 21
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      # 3️⃣ Executar build Maven (gera o .jar)
+      - name: Build with Maven
+        run: mvn clean package
+
+      # 4️⃣ Publicar o .jar como artefacto do workflow
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-app-jar
+          path: target/*.jar
