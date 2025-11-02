@@ -98,7 +98,6 @@ Este projeto possui uma pipeline de integração contínua (CI) e entrega contí
 - Configura o **Java 21** no runner.
 - Executa o comando `mvn clean package` para **compilar o projeto e gerar o arquivo `.jar`**.
 - Publica o `.jar` como **artefacto do workflow**, disponível para download na aba Actions.
-- Opcionalmente, copia o `.jar` para a raiz do runner durante a execução do workflow.
 
 ### Excerto do `build.yml`
 
