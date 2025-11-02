@@ -25,6 +25,10 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
 
+      # 5️⃣ Copiar o .jar para a raiz do repositório (opcional)
+      - name: Copy JAR to root
+        run: cp target/*.jar .
+
       # 4️⃣ Publicar o .jar como artefacto do workflow
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
